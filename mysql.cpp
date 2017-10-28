@@ -219,6 +219,12 @@ void Statement::setStringParam(int paramIdx, const char* val) {
 	b->buffer = (void *)val;
 	b->buffer_length = val ? strlen(val) : 0;
 }
+void Statement::setBlobParam(int paramIdx, void *val, int len) {
+	MYSQL_BIND *b = (MYSQL_BIND*)mParams + paramIdx;
+	b->buffer_type = MYSQL_TYPE_BLOB;
+	b->buffer = val;
+	b->buffer_length = len;
+}
 void Statement::setParam( int paramIdx, ColumnType ct, void *val, int len ) {
 	MYSQL_BIND *b = (MYSQL_BIND*)mParams + paramIdx;
 	b->buffer_type = enum_field_types(ct);

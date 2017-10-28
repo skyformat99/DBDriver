@@ -49,6 +49,7 @@ public:
 	void setInt64Param(int paramIdx, long long int val);
 	void setDoubleParam(int paramIdx, double val);
 	void setStringParam(int paramIdx, const char* val);
+	void setBlobParam(int paramIdx, void *val, int len);
 	void setParam(int paramIdx, ColumnType ct, void *val, int len);
 	bool sendBLOB(int paramIdx, void *data, int length); // 调用之前，所有的params必需先设好
 
